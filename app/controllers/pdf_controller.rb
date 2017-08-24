@@ -4,30 +4,30 @@ class PdfController < ApplicationController
     data = nil
     case request.request_method
       when 'GET'
-        data = File.read(Rails.root.join('lib', 'assets', 'sample_inert_identification_bakesheet.txt'))
+        @sample_data = File.read(Rails.root.join('lib', 'assets', 'sample_inert_identification_bakesheet.txt'))
       when 'POST'
         data = params[:data]
+        pdf = InertIdentificationBakesheet.new data
+        send_data pdf.render,
+                  filename: "Identification Bakesheet",
+                  type: "application/pdf",
+                  disposition: "inline"
     end
-    pdf = InertIdentificationBakesheet.new data
-    send_data pdf.render,
-              filename: "Identification Bakesheet",
-              type: "application/pdf",
-              disposition: "inline"
   end
 
   def inert_final_bakesheet
     data = nil
     case request.request_method
       when 'GET'
-        data = File.read(Rails.root.join('lib', 'assets', 'sample_inert_final_bakesheet.txt'))
+        @sample_data = File.read(Rails.root.join('lib', 'assets', 'sample_inert_final_bakesheet.txt'))
       when 'POST'
         data = params[:data]
+        pdf = InertFinalBakesheet.new data
+        send_data pdf.render,
+                  filename: "Final Bakesheet",
+                  type: "application/pdf",
+                  disposition: "inline"
     end
-    pdf = InertFinalBakesheet.new data
-    send_data pdf.render,
-              filename: "Final Bakesheet",
-              type: "application/pdf",
-              disposition: "inline"
   end
 
 end
