@@ -7,3 +7,15 @@
     margin-bottom: 1rem !important;
   }
 }
+
+.col-xs-12 + .col-xs-12 {
+  margin-top: 1rem !important;
+}
+
+@media (min-width: 576px) {
+
+  .col-xs-12 + .col-xs-12 {
+    margin-top: 0 !important;
+  }
+
+}
