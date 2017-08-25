@@ -1,0 +1,134 @@
+<div class="card mt-3">
+  <h4 class="card-header">Inert Atmosphere Oven PDFs</h4>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs"
+        role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active"
+           id="iao-id-tab"
+           data-toggle="tab"
+           role="tab"
+           aria-controls="iao-id"
+           href="#iao-id">ID Bakesheet</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           id="iao-final-tab"
+           data-toggle="tab"
+           role="tab"
+           aria-controls="iao-final"
+           href="#iao-final">Final Bakesheet</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="card-body tab-pane fade show active"
+         id="iao-id"
+         role="tabpanel"
+         aria-labelledby="iao-id-tab">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <%= form_tag({ action: 'inert_identification_bakesheet' },
+                       method: "post") do %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= hidden_field_tag :sample, true %>
+            <button class="btn btn-block btn-outline-danger">
+              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+              View Sample
+            </button>
+          <% end %>
+        </div>
+      </div>
+      <p class="card-text">
+        The <abbr title="Inert Atmosphere Oven">IAO</abbr> ID bakesheet is used
+        to identify parts while they're baking (it is designed to be printed
+        and displayed on the front of the oven). To generate the PDF, an array
+        of exactly 18 <code>Tray</code> objects must be POSTed via a JSON
+        encoded string.
+      </p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <code>Tray</code>
+            </div>
+            <div class="card-body">
+              <pre class="mb-0"><%= render :partial => 'iao_tray' %></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body tab-pane fade"
+         id="iao-final"
+         role="tabpanel"
+         aria-labelledby="iao-final-tab">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <%= form_tag({ action: 'inert_final_bakesheet' },
+                       method: "post") do %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= hidden_field_tag :sample, true %>
+            <button class="btn btn-block btn-outline-danger">
+              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+              View Sample
+            </button>
+          <% end %>
+        </div>
+      </div>
+      <p class="card-text">
+        The <abbr title="Inert Atmosphere Oven">IAO</abbr> final bakesheet is
+        used to document the baking process and is printed and attached to
+        shop orders after parts are baked. To generate the PDF, an object must
+        be POSTed via a JSON encoded string. The container object must contain
+        three properties: an array of exactly 18 <code>Tray</code> objects, a
+        <code>Timestamps</code> object, and an array of <code>Status
+        Reading</code> objects.
+      </p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              Container Object
+            </div>
+            <div class="card-body">
+              <pre class="mb-0"><%= render :partial => 'iao_final_object' %></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <code>Tray</code>
+            </div>
+            <div class="card-body">
+              <pre class="mb-0"><%= render :partial => 'iao_tray' %></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <code>Timestamps</code>
+            </div>
+            <div class="card-body">
+              <pre class="mb-0"><%= render :partial => 'iao_timestamps' %></pre>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card">
+            <div class="card-header">
+              <code>Status Reading</code>
+            </div>
+            <div class="card-body">
+              <pre class="mb-0"><%= render :partial => 'iao_status_reading' %></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
