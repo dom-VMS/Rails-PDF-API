@@ -12,6 +12,10 @@
   margin-top: 1rem !important;
 }
 
+.font-monospace {
+  font-family: Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
 @media (min-width: 576px) {
 
   .col-xs-12 + .col-xs-12 {

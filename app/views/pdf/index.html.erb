@@ -3,42 +3,23 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs"
         role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active"
-           id="iao-id-tab"
-           data-toggle="tab"
-           role="tab"
-           aria-controls="iao-id"
-           href="#iao-id">ID Bakesheet</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-           id="iao-final-tab"
-           data-toggle="tab"
-           role="tab"
-           aria-controls="iao-final"
-           href="#iao-final">Final Bakesheet</a>
-      </li>
+      <%= render partial: "nav_tab",
+                 locals: { id: "iao-id",
+                           title: "ID Bakesheet" } %>
+      <%= render partial: "nav_tab",
+                locals: { id: "iao-final",
+                          title: "Final Bakesheet" } %>
     </ul>
   </div>
   <div class="tab-content">
-    <div class="card-body tab-pane fade show active"
+    <div class="card-body tab-pane fade"
          id="iao-id"
          role="tabpanel"
          aria-labelledby="iao-id-tab">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= form_tag({ action: 'inert_identification_bakesheet' },
-                       method: "post") do %>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= hidden_field_tag :sample, true %>
-            <button class="btn btn-block btn-outline-danger">
-              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-              View Sample
-            </button>
-          <% end %>
-        </div>
-      </div>
+      <%= render partial: 'sample_form',
+                 locals: { action: "inert_identification_bakesheet" } %>
+      <%= render partial: 'post_url',
+                 locals: { url: "/inert_identification_bakesheet" } %>
       <p class="card-text">
         The <abbr title="Inert Atmosphere Oven">IAO</abbr> ID bakesheet is used
         to identify parts while they're baking (it is designed to be printed
@@ -47,35 +28,19 @@
         encoded string.
       </p>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <code>Tray</code>
-            </div>
-            <div class="card-body">
-              <pre class="mb-0"><%= render :partial => 'iao_tray' %></pre>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'object_card',
+                   locals: { heading: "Tray",
+                             code: "iao_tray" } %>
       </div>
     </div>
     <div class="card-body tab-pane fade"
          id="iao-final"
          role="tabpanel"
          aria-labelledby="iao-final-tab">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= form_tag({ action: 'inert_final_bakesheet' },
-                       method: "post") do %>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= hidden_field_tag :sample, true %>
-            <button class="btn btn-block btn-outline-danger">
-              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-              View Sample
-            </button>
-          <% end %>
-        </div>
-      </div>
+      <%= render partial: 'sample_form',
+                 locals: { action: "inert_final_bakesheet" } %>
+      <%= render partial: 'post_url',
+                 locals: { url: "/inert_final_bakesheet" } %>
       <p class="card-text">
         The <abbr title="Inert Atmosphere Oven">IAO</abbr> final bakesheet is
         used to document the baking process and is printed and attached to
@@ -86,48 +51,20 @@
         Reading</code> objects.
       </p>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              Container Object
-            </div>
-            <div class="card-body">
-              <pre class="mb-0"><%= render :partial => 'iao_final_object' %></pre>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <code>Tray</code>
-            </div>
-            <div class="card-body">
-              <pre class="mb-0"><%= render :partial => 'iao_tray' %></pre>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'object_card',
+                   locals: { heading: "Container",
+                             code: "iao_final_object" } %>
+        <%= render partial: 'object_card',
+                   locals: { heading: "Tray",
+                             code: "iao_tray" } %>
       </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <code>Timestamps</code>
-            </div>
-            <div class="card-body">
-              <pre class="mb-0"><%= render :partial => 'iao_timestamps' %></pre>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="card">
-            <div class="card-header">
-              <code>Status Reading</code>
-            </div>
-            <div class="card-body">
-              <pre class="mb-0"><%= render :partial => 'iao_status_reading' %></pre>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'object_card',
+                   locals: { heading: "Timestamps",
+                             code: "iao_timestamps" } %>
+        <%= render partial: 'object_card',
+                   locals: { heading: "Status Reading",
+                             code: "iao_status_reading" } %>
       </div>
     </div>
   </div>

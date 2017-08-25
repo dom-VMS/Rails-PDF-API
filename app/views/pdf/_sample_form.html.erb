@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <%= form_tag({ action: action },
+                  method: "post") do %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :sample, true %>
+      <button class="btn btn-block btn-outline-danger">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        View Sample
+      </button>
+    <% end %>
+  </div>
+</div>
