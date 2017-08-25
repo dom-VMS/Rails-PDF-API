@@ -12,7 +12,7 @@ class PdfController < ApplicationController
     end
     pdf = InertIdentificationBakesheet.new data
     send_data pdf.render,
-              filename: "Identification Bakesheet",
+              filename: "Identification Bakesheet.pdf",
               type: "application/pdf",
               disposition: "inline"
   end
@@ -26,7 +26,7 @@ class PdfController < ApplicationController
     end
     pdf = InertFinalBakesheet.new data
     send_data pdf.render,
-              filename: "Final Bakesheet",
+              filename: "Final Bakesheet.pdf",
               type: "application/pdf",
               disposition: "inline"
   end
