@@ -5,14 +5,16 @@
         role="tablist">
       <%= render partial: "nav_tab",
                  locals: { id: "iao-id",
-                           title: "ID Bakesheet" } %>
+                           title: "ID Bakesheet",
+                           active: true } %>
       <%= render partial: "nav_tab",
                 locals: { id: "iao-final",
-                          title: "Final Bakesheet" } %>
+                          title: "Final Bakesheet",
+                          active: false } %>
     </ul>
   </div>
   <div class="tab-content">
-    <div class="card-body tab-pane fade"
+    <div class="card-body tab-pane fade show active"
          id="iao-id"
          role="tabpanel"
          aria-labelledby="iao-id-tab">
