@@ -29,15 +29,19 @@
       <p class="card-text">
         The <abbr title="Inert Atmosphere Oven">IAO</abbr> ID bakesheet is used
         to identify parts while they're baking (it is designed to be printed
-        and displayed on the front of the oven). To generate the PDF, an array
-        of exactly 18 <code>Tray</code> objects must be POSTed via a JSON
-        encoded string.
+        and displayed on the front of the oven). To generate the PDF, an object must
+        be POSTed via a JSON encoded string. The container object must contain
+        two properties: an integer bakestand number and an array of exactly 18
+        <code>Tray</code> objects.
       </p>
       <p class="card-text">
         <em>This PDF is generated from the same exact data as the IAO bakestand
         bakesheet.</em>
       </p>
       <div class="row">
+        <%= render partial: 'object_card',
+                   locals: { heading: "Container",
+                             code: "iao_id_object" } %>
         <%= render partial: 'object_card',
                    locals: { heading: "Tray",
                              code: "iao_tray" } %>
@@ -54,14 +58,18 @@
       <p class="card-text">
         The <abbr title="Inert Atmosphere Oven">IAO</abbr> bakestand bakesheet is
         used to identify parts on a bakestand after they have been removed from the
-        oven. To generate the PDF, an array of exactly 18 <code>Tray</code> objects
-        must be POSTed via a JSON encoded string.
+        oven. To generate the PDF, an object must be POSTed via a JSON encoded
+        string. The container object must contain two properties: an integer
+        bakestand number and an array of exactly 18 <code>Tray</code> objects.
       </p>
       <p class="card-text">
         <em>This PDF is generated from the same exact data as the IAO identification
         bakesheet.</em>
       </p>
       <div class="row">
+        <%= render partial: 'object_card',
+                   locals: { heading: "Container",
+                             code: "iao_id_object" } %>
         <%= render partial: 'object_card',
                    locals: { heading: "Tray",
                              code: "iao_tray" } %>

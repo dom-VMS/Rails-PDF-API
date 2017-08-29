@@ -9,22 +9,21 @@ class InertFinalBakesheet < VarlandPdf
   LIGHT_GRAY = 'dddddd'
   SOAK_BACKGROUND = 'eeeeee'
   DEFAULT_LAYOUT = :portrait
-  VALIDATION_REGEX = '^\{"trays":\[(\{"so":[\d]+,"load":[\d]+,"customer":' +
-                     '"[\w]*","process":"[\w]*","part":"[\w]*","sub":"[\w]*"' +
-                     ',"set":[\d]+,"min":[\d]+,"max":[\d]+,"length":[\d]+,' +
-                     '"profile":"[\w]*"\},?){18}\],"timestamps":\{("(' +
-                     'cycle_started|purge_ended|soak_started|soak_ended|' +
-                     'gas_off)":"[\d\-T:]+",?){5}\},"status_readings":\[(\{' +
-                     '"air":\d+,"parts":\d+,"pressure":[\d\.]+,"timestamp":' +
-                     '"[\d\-T:]+"\},?)+\]\}$'
-		PARTS_COLOR = '3a8eed'
-		AIR_COLOR = 'f26077'
-		PRESSURE_COLOR = '68bc36'
-		GAS_COLOR = '9662d0'
-		PURGE_COLOR = 'ff914d'
-		COOLING_COLOR = '00bfc0'
-		LEGEND_COLORS = [[PARTS_COLOR, AIR_COLOR, PRESSURE_COLOR],
-		                 [GAS_COLOR, PURGE_COLOR, COOLING_COLOR]]
+  VALIDATION_REGEX = '^\{"trays":\[(\{"so":\d+,"load":\d+,"customer":"\w*",' +
+                     '"process":"\w*","part":"\w*","sub":"\w*","set":\d+,' +
+                     '"min":\d+,"max":\d+,"length":\d+,"profile":"\w*"\},?)' +
+                     '{18}\],"timestamps":\{("(cycle_started|purge_ended|' +
+                     'soak_started|soak_ended|gas_off)":"[\d\-T:]+",?){5}\},' +
+                     '"status_readings":\[(\{"air":\d+,"parts":\d+,"pressure"' +
+                     ':[\d\.]+,"timestamp":"[\d\-T:]+"\},?)+\]\}$'
+  PARTS_COLOR = '3a8eed'
+  AIR_COLOR = 'f26077'
+  PRESSURE_COLOR = '68bc36'
+  GAS_COLOR = '9662d0'
+  PURGE_COLOR = 'ff914d'
+  COOLING_COLOR = '00bfc0'
+  LEGEND_COLORS = [[PARTS_COLOR, AIR_COLOR, PRESSURE_COLOR],
+                    [GAS_COLOR, PURGE_COLOR, COOLING_COLOR]]
 
   def initialize(data)
     super()

@@ -13,6 +13,7 @@ class InertBakestandBakesheet < VarlandPdf
     font "Whitney"
     if is_valid?
       parse_data
+      print_bakestand_number
       draw_orders_table
       draw_bakestand
     else
@@ -27,11 +28,13 @@ class InertBakestandBakesheet < VarlandPdf
   end
 
   def parse_data
-    @trays = JSON.parse(@data)
+    pieces = JSON.parse(@data).symbolize_keys
+    @trays = pieces[:trays]
     @trays.each do |t|
       t.symbolize_keys!
     end
     @shop_orders = @trays.collect{|t| t[:so]}.uniq.sort - [0]
+    @bakestand_number = pieces[:bakestand_number]
   end
   
   # Find array index based on column and row of data.
@@ -63,11 +66,30 @@ class InertBakestandBakesheet < VarlandPdf
 
   end
 
+  def print_bakestand_number
+    
+    # Draw bounding box.
+    bounding_box([0, bounds.height - 54], :width => bounds.width, :height => 24) do
+      
+      # Draw heading.
+      text_box "Bakestand #: <strong>#{@bakestand_number}</strong>",
+                :height    =>  24,
+                :width     =>  450,
+                :overflow  =>  :shrink_to_fit,
+                :valign    =>  :top,
+                :size      =>  24,
+                :style     =>  :bold,
+                :align     =>  :left,
+                :inline_format  =>  true
+    
+    end
+
+  end
+
   def draw_bakestand
 
     # Draw bounding box.
-    bounding_box([0, bounds.height - 396], :width => bounds.width, :height => 320) do
-      # stroke_bounds
+    bounding_box([0, bounds.height - 438], :width => bounds.width, :height => 320) do
       
       # Draw heading.
       text_box "Arrangement of Parts on Bakestand",
@@ -128,7 +150,7 @@ class InertBakestandBakesheet < VarlandPdf
       rows << [" ", " ", " ", " "]
 
       table(rows) do |t|
-        t.cells.padding = 8
+        t.cells.padding = 6
         t.position = :left
         t.column_widths = [135, 135, 135, 135]
         t.cells.style do |c|
@@ -154,8 +176,14 @@ class InertBakestandBakesheet < VarlandPdf
             c.text_color = TOP_ROW_COLORS[1]
             c.background_color = TOP_ROW_COLORS[0]
             c.size = 8
-            c.padding = 9
+            c.padding = 7
           end
+        end
+        t.before_rendering_page do |page|
+          page.row(0).border_top_width = 2
+          page.row(-1).border_bottom_width = 2
+          page.column(0).border_left_width = 2
+          page.column(-1).border_right_width = 2
         end
       end
 
@@ -166,7 +194,7 @@ class InertBakestandBakesheet < VarlandPdf
   def draw_orders_table
 
     # Draw bounding box.
-    bounding_box([0, bounds.height - 54], :width => bounds.width, :height => 324) do
+    bounding_box([0, bounds.height - 96], :width => bounds.width, :height => 324) do
 
       # Draw heading.
       text_box "Parts Loaded on this Bakestand",

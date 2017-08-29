@@ -8,10 +8,10 @@ class InertIdentificationBakesheet < VarlandPdf
                        '73fdff']
   SHELF_NUMBER_COLORS = ['dddddd', '999999']
   DEFAULT_LAYOUT = :landscape
-  VALIDATION_REGEX = '^\[(\{"so":[\d]+,"load":[\d]+,"customer":"[\w]*",' +
-                     '"process":"[\w]*","part":"[\w]*","sub":"[\w]*",' +
-                     '"set":[\d]+,"min":[\d]+,"max":[\d]+,"length":[\d]+,' +
-                     '"profile":"[\w]*"\},?){18}\]$'
+  VALIDATION_REGEX = '^\{"bakestand_number":\d+,"trays":\[(\{"so":\d+,"load"' +
+                     ':\d+,"customer":"\w*","process":"\w*","part":"\w*",' +
+                     '"sub":"\w*","set":\d+,"min":\d+,"max":\d+,"length":\d+,' +
+                     '"profile":"\w*"\},?){18}\]\}$'
 
   def initialize(data)
     super()
@@ -37,7 +37,8 @@ class InertIdentificationBakesheet < VarlandPdf
   end
 
   def parse_data
-    @trays = JSON.parse(@data)
+    pieces = JSON.parse(@data).symbolize_keys
+    @trays = pieces[:trays]
     @trays.each do |t|
       t.symbolize_keys!
     end
