@@ -39,11 +39,11 @@ class InertBakestandBakesheet < VarlandPdf
 
     base = nil
     case column
-      when 0
+      when 3
         base = 0
-      when 1
-        base = 6
       when 2
+        base = 6
+      when 1
         base = 12
       else
         return nil
@@ -51,10 +51,10 @@ class InertBakestandBakesheet < VarlandPdf
 
     index = nil
     case row
-      when 1..3
-        index = base + row - 1
-      when 5..7
+      when 2..4
         index = base + row - 2
+      when 6..8
+        index = base + row - 3
       else
         return nil
     end
@@ -116,16 +116,16 @@ class InertBakestandBakesheet < VarlandPdf
 
       rows = []
       rows << ["« EMPTY »", "« EMPTY »", "« EMPTY »", "« EMPTY »"]
-      rows << ["#{loadings[0]}", "#{loadings[6]}", "#{loadings[12]}", " "]
-      rows << ["#{loadings[1]}", "#{loadings[7]}", "#{loadings[13]}", " "]
-      rows << ["#{loadings[2]}", "#{loadings[8]}", "#{loadings[14]}", " "]
       rows << [" ", " ", " ", " "]
-      rows << ["#{loadings[3]}", "#{loadings[9]}", "#{loadings[15]}", " "]
-      rows << ["#{loadings[4]}", "#{loadings[10]}", "#{loadings[16]}", " "]
-      rows << ["#{loadings[5]}", "#{loadings[11]}", "#{loadings[17]}", " "]
-      (1..3).each do
-        rows << [" ", " ", " ", " "]
-      end
+      rows << [" ", "<strong>#{loadings[12]}</strong>", "<strong>#{loadings[6]}</strong>", "<strong>#{loadings[0]}</strong>"]
+      rows << [" ", "<strong>#{loadings[13]}</strong>", "<strong>#{loadings[7]}</strong>", "<strong>#{loadings[1]}</strong>"]
+      rows << [" ", "<strong>#{loadings[14]}</strong>", "<strong>#{loadings[8]}</strong>", "<strong>#{loadings[2]}</strong>"]
+      rows << [" ", " ", " ", " "]
+      rows << [" ", "<strong>#{loadings[15]}</strong>", "<strong>#{loadings[9]}</strong>", "<strong>#{loadings[3]}</strong>"]
+      rows << [" ", "<strong>#{loadings[16]}</strong>", "<strong>#{loadings[10]}</strong>", "<strong>#{loadings[4]}</strong>"]
+      rows << [" ", "<strong>#{loadings[17]}</strong>", "<strong>#{loadings[11]}</strong>", "<strong>#{loadings[5]}</strong>"]
+      rows << [" ", " ", " ", " "]
+      rows << [" ", " ", " ", " "]
 
       table(rows) do |t|
         t.cells.padding = 8
