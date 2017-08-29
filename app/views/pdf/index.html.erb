@@ -8,6 +8,10 @@
                            title: "ID Bakesheet",
                            active: true } %>
       <%= render partial: "nav_tab",
+                locals: { id: "iao-bakestand",
+                          title: "Bakestand Bakesheet",
+                          active: false } %>
+      <%= render partial: "nav_tab",
                 locals: { id: "iao-final",
                           title: "Final Bakesheet",
                           active: false } %>
@@ -28,6 +32,34 @@
         and displayed on the front of the oven). To generate the PDF, an array
         of exactly 18 <code>Tray</code> objects must be POSTed via a JSON
         encoded string.
+      </p>
+      <p class="card-text">
+        <em>This PDF is generated from the same exact data as the IAO bakestand
+        bakesheet.</em>
+      </p>
+      <div class="row">
+        <%= render partial: 'object_card',
+                   locals: { heading: "Tray",
+                             code: "iao_tray" } %>
+      </div>
+    </div>
+    <div class="card-body tab-pane fade"
+         id="iao-bakestand"
+         role="tabpanel"
+         aria-labelledby="iao-id-tab">
+      <%= render partial: 'sample_form',
+                 locals: { action: "inert_bakestand_bakesheet" } %>
+      <%= render partial: 'post_url',
+                 locals: { url: "/inert_bakestand_bakesheet" } %>
+      <p class="card-text">
+        The <abbr title="Inert Atmosphere Oven">IAO</abbr> bakestand bakesheet is
+        used to identify parts on a bakestand after they have been removed from the
+        oven. To generate the PDF, an array of exactly 18 <code>Tray</code> objects
+        must be POSTed via a JSON encoded string.
+      </p>
+      <p class="card-text">
+        <em>This PDF is generated from the same exact data as the IAO identification
+        bakesheet.</em>
       </p>
       <div class="row">
         <%= render partial: 'object_card',

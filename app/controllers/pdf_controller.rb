@@ -16,6 +16,20 @@ class PdfController < ApplicationController
               type: "application/pdf",
               disposition: "inline"
   end
+  
+  def inert_bakestand_bakesheet
+    data = nil
+    if params[:sample]
+      data = File.read(Rails.root.join('lib', 'assets', 'sample_iao_id.txt'))
+    else
+      data = params[:data]
+    end
+    pdf = InertBakestandBakesheet.new data
+    send_data pdf.render,
+              filename: "Bakestand Bakesheet.pdf",
+              type: "application/pdf",
+              disposition: "inline"
+  end
 
   def inert_final_bakesheet
     data = nil
