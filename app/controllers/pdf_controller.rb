@@ -34,7 +34,7 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path, landscape: true
-      #File.delete(path)
+      File.delete(path)
       render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
@@ -59,7 +59,7 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path
-      #File.delete(path)
+      File.delete(path)
       render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
@@ -84,7 +84,7 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path
-      #File.delete(path)
+      File.delete(path)
       render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
