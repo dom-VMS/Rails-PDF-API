@@ -34,8 +34,8 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path, landscape: true
-      File.delete(path)
-      render plain: "PDF sent to printer."
+      #File.delete(path)
+      render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
                 filename: "Identification Bakesheet.pdf",
@@ -59,8 +59,8 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path
-      File.delete(path)
-      render plain: "PDF sent to printer."
+      #File.delete(path)
+      render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
                 filename: "Bakestand Bakesheet.pdf",
@@ -84,8 +84,8 @@ class PdfController < ApplicationController
       pdf.render_file path
       spooler = VMS::PrintSpooler.new printer: printer, color: true
       spooler.print_files path
-      File.delete(path)
-      render plain: "PDF sent to printer."
+      #File.delete(path)
+      render plain: "PDF (#{path}) sent to printer."
     else
       send_data pdf.render,
                 filename: "Final Bakesheet.pdf",
