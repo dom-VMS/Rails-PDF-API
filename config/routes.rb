@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root "pdf#index"
+  
+  match "/inert_id_bakestand_bakesheets" => "pdf#inert_id_bakestand_bakesheets",
+        via: [:post]
 
   match "/inert_identification_bakesheet" => "pdf#inert_identification_bakesheet",
         via: [:post]

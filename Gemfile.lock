@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/VarlandMetalService/vms-gem.git
+  revision: bf22a2417232ae6f04909f9beba8d7bb251d2fa3
+  specs:
+    vms (0.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -229,6 +235,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
+  vms (>= 0.0.0)!
   web-console (>= 3.3.0)
 
 BUNDLED WITH
