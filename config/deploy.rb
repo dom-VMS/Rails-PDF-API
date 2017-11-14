@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.9.0"
+lock "3.10.0"
 
 set :application, "Rails-PDF-API"
 set :repo_url, "https://github.com/VarlandMetalService/Rails-PDF-API.git"
