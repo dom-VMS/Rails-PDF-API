@@ -10,7 +10,7 @@ class InertFinalBakesheet < VarlandPdf
   SOAK_BACKGROUND = 'eeeeee'
   DEFAULT_LAYOUT = :portrait
   VALIDATION_REGEX = '^\{"trays":\[(\{"so":\d+,"load":\d+,"customer":"\w*",' +
-                     '"process":"\w*","part":"\w*","sub":"\w*","set":\d+,' +
+                     '"process":"\w*","part":"[\w\-]*","sub":"\w*","set":\d+,' +
                      '"min":\d+,"max":\d+,"length":\d+,"profile":"\w*"\},?)' +
                      '{18}\],"timestamps":\{("(cycle_started|purge_ended|' +
                      'soak_started|soak_ended|gas_off)":"[\d\-T:]+",?){5}\},' +

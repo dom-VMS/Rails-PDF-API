@@ -9,7 +9,7 @@ class InertIdentificationBakesheet < VarlandPdf
   SHELF_NUMBER_COLORS = ['dddddd', '999999']
   DEFAULT_LAYOUT = :landscape
   VALIDATION_REGEX = '^\{"bakestand_number":\d+,"trays":\[(\{"so":\d+,"load"' +
-                     ':\d+,"customer":"\w*","process":"\w*","part":"\w*",' +
+                     ':\d+,"customer":"\w*","process":"\w*","part":"[\w\-]*",' +
                      '"sub":"\w*","set":\d+,"min":\d+,"max":\d+,"length":\d+,' +
                      '"profile":"\w*"\},?){18}\]\}$'
 
