@@ -111,3 +111,37 @@
     </div>
   </div>
 </div>
+
+<div class="card mt-3 mb-3">
+  <h4 class="card-header">Other PDFs</h4>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs"
+        role="tablist">
+      <%= render partial: "nav_tab",
+                 locals: { id: "other-so",
+                           title: "Shop Order",
+                           active: true } %>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="card-body tab-pane fade show active"
+         id="other-so"
+         role="tabpanel"
+         aria-labelledby="other-so-tab">
+      <%= render partial: 'sample_form',
+                 locals: { action: "shop_order" } %>
+      <p class="card-text">
+        The <abbr title="Inert Atmosphere Oven">IAO</abbr> ID bakesheet is used
+        to identify parts while they're baking (it is designed to be printed
+        and displayed on the front of the oven). To generate the PDF, an object must
+        be POSTed via a JSON encoded string. The container object must contain
+        two properties: an integer bakestand number and an array of exactly 18
+        <code>Tray</code> objects.
+      </p>
+      <p class="card-text">
+        <em>This PDF is generated from the same exact data as the IAO bakestand
+        bakesheet.</em>
+      </p>
+    </div>
+  </div>
+</div>

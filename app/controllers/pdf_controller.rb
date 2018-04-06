@@ -3,6 +3,24 @@ class PdfController < ApplicationController
   def index
   end
 
+  def shop_order
+    printer = :ox
+    pdf = ShopOrder.new
+    if params[:print]
+      path = Tempfile.new(['shop_order','.pdf']).path
+      pdf.render_file path
+      spooler = VMS::PrintSpooler.new printer: printer, color: true
+      spooler.print_files path
+      File.delete(path)
+      render plain: "PDF (#{path}) sent to printer."
+    else
+      send_data pdf.render,
+                filename: "Shop Order.pdf",
+                type: "application/pdf",
+                disposition: "inline"
+    end
+  end
+
   def inert_id_bakestand_bakesheets
     data = params[:data]
     id = InertIdentificationBakesheet.new data

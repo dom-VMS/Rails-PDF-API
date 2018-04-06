@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   match "/inert_final_bakesheet" => "pdf#inert_final_bakesheet",
         via: [:post]
 
+  match "/shop_order" => "pdf#shop_order",
+        via: [:post]
+
   match "/index" => "pdf#index",
         via: [:get]
 
