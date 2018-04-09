@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         via: [:post]
 
   match "/shop_order" => "pdf#shop_order",
-        via: [:post]
+        via: [:post, :get]
 
   match "/index" => "pdf#index",
         via: [:get]

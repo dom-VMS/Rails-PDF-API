@@ -235,8 +235,8 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
-  vms (>= 0.0.0)!
+  vms!
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.6
+   1.16.0
