@@ -1,9 +1,7 @@
 class VarlandPdf < Prawn::Document
 
-  # Default page properties may be overridden by child classes.
   DEFAULT_MARGIN = 36
   DEFAULT_LAYOUT = :portrait
-
   ROTATION_FUDGE_FACTOR = -4
 
   def initialize
@@ -22,6 +20,46 @@ class VarlandPdf < Prawn::Document
         :italic       => Rails.root.join('lib', 'assets', 'Whitney-BookItalic.ttf'),
         :bold         => Rails.root.join('lib', 'assets', 'Whitney-Semibold.ttf'),
         :bold_italic  => Rails.root.join('lib', 'assets', 'Whitney-SemiboldItalic.ttf')
+      }
+    )
+    font_families.update(
+      "Menlo" => {
+        :normal       => Rails.root.join('lib', 'assets', 'Menlo-Regular.ttf'),
+        :italic       => Rails.root.join('lib', 'assets', 'Menlo-Italic.ttf'),
+        :bold         => Rails.root.join('lib', 'assets', 'Menlo-Bold.ttf'),
+        :bold_italic  => Rails.root.join('lib', 'assets', 'Menlo-BoldItalic.ttf')
+      }
+    )
+    font_families.update(
+      "Arial Narrow" => {
+        :normal       => Rails.root.join('lib', 'assets', 'ARIALN.ttf'),
+        :italic       => Rails.root.join('lib', 'assets', 'ARIALNI.ttf'),
+        :bold         => Rails.root.join('lib', 'assets', 'ARIALNB.ttf'),
+        :bold_italic  => Rails.root.join('lib', 'assets', 'ARIALNBI.ttf')
+      }
+    )
+    font_families.update(
+      "Arial" => {
+        :normal       => Rails.root.join('lib', 'assets', 'arial.ttf'),
+        :italic       => Rails.root.join('lib', 'assets', 'ariali.ttf'),
+        :bold         => Rails.root.join('lib', 'assets', 'arialbd.ttf'),
+        :bold_italic  => Rails.root.join('lib', 'assets', 'arialbi.ttf')
+      }
+    )
+    font_families.update(
+      "Source Code Pro" => {
+        :normal       => Rails.root.join('lib', 'assets', 'SourceCodePro-Regular.ttf'),
+        :italic       => Rails.root.join('lib', 'assets', 'SourceCodePro-It.ttf'),
+        :bold         => Rails.root.join('lib', 'assets', 'SourceCodePro-Bold.ttf'),
+        :bold_italic  => Rails.root.join('lib', 'assets', 'SourceCodePro-BoldIt.ttf')
+      }
+    )
+    font_families.update(
+      "Courier New" => {
+        :normal       => Rails.root.join('lib', 'assets', 'Courier New.ttf'),
+        :italic       => Rails.root.join('lib', 'assets', 'Courier New Italic.ttf'),
+        :bold         => Rails.root.join('lib', 'assets', 'Courier New Bold.ttf'),
+        :bold_italic  => Rails.root.join('lib', 'assets', 'Courier New Bold Italic.ttf')
       }
     )
   end

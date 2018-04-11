@@ -3,6 +3,27 @@ class PdfController < ApplicationController
   def index
   end
 
+  def so
+    printer = :ox
+    if params[:print]
+      ['yellow', 'green', 'blue', 'purple', '', ''].each do |color|
+        pdf = SO.new nil, color
+        path = Tempfile.new(['so','.pdf']).path
+        pdf.render_file path
+        spooler = VMS::PrintSpooler.new printer: printer, color: true
+        spooler.print_files path
+        # File.delete(path)
+      end
+      render plain: "PDF sent to printer."
+    else
+      pdf = SO.new nil, 'blue'
+      send_data pdf.render,
+                filename: "SO.pdf",
+                type: "application/pdf",
+                disposition: "inline"
+    end
+  end
+
   def shop_order
     printer = :ox
     pdf = ShopOrder.new
